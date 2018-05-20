@@ -1,11 +1,13 @@
 import requests
-import json
+
 
 api_keys = []
 list_songs = []
 list_artists = []
 list_spotifyurl = []
 user_loop = 0
+list_songs_unique = []
+list_artists_unique = []
 
 
 
@@ -44,7 +46,11 @@ while (user_loop <= len(api_keys)):
     get_top_tracks(api_keys[user_loop - 1])
     if user_loop <= len(api_keys):
         user_loop += 1
+
+
 print('These are your most listened Songs: ')
+list_songs = list_songs[20:]
+list_artists = list_artists[20:]
 for i in range(len(list_songs)):
-    print(str(i + 1)+":", list_songs[i], list_artists[i])
+    print(str(i +1)+":", list_songs[i], list_artists[i])
 
