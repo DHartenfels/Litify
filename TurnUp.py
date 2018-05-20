@@ -51,6 +51,9 @@ while (user_loop <= len(api_keys)):
 print('These are your most listened Songs: ')
 list_songs = list_songs[20:]
 list_artists = list_artists[20:]
+list_spotifyurl = list_spotifyurl[20:]
+
 for i in range(len(list_songs)):
     print(str(i +1)+":", list_songs[i], list_artists[i])
+
 
