@@ -8,6 +8,7 @@ list_spotifyurl = []
 user_loop = 0
 
 
+
 def get_top_tracks(api_key):
     r = requests.get("https://api.spotify.com/v1/me/top/tracks", headers={"Authorization": "Bearer " + str(api_key)})
     jsondata = r.json()["items"]
@@ -25,24 +26,25 @@ xd= ("\n"
      " | |     (_)| |  (_) / _|                 | |                                      |__ \             | |  | |                \n"
      " | |      _ | |_  _ | |_  _   _   ______  | |_  _   _  _ __  _ __    _   _  _ __      ) | __ _   ___ | |_ | |__    ___  _ __ \n"
      " | |     | || __|| ||  _|| | | | |______| | __|| | | || '__|| '_ \  | | | || '_ \    / / / _` | / _ \| __|| '_ \  / _ \| '__|\n"
-     " | |_ ___ | || |_ | || |  | |_| |          | |_ | |_| || |   | | | | | |_| || |_) |  / /_| (_| ||  __/| |_ | | | ||  __/| |   \n"
+     " | |_ ___ | || |_ | || |  | |_| |          | |_ | |_| || |   | | | | | |_| || |_) |  / /_| (_| ||  __/| |_ | | | ||  __/| |  \n"
      " |______||_| \__||_||_|   \__, |           \__| \__,_||_|   |_| |_|  \__,_|| .__/  |____|\__, | \___| \__||_| |_| \___||_|   \n"
      "                           __/ |                                           | |            __/ |                              \n"
      "                          |___/                                            |_|           |___/                               \n"
      "\n")
 print(xd)
 
-erste_eingabe = input("Bitte geben Sie den ersten Auth Bearer ein: ")
-api_keys.append(erste_eingabe)
-more_keys = input("Wollen Sie noch mehr Keys eingeben? (y/anykey)")
+first_input = input("Please enter the first Key: ")
+api_keys.append(first_input)
+more_keys = input("Do you want to add more Keys? (y/anykey)")
 while more_keys == "y":
-    api_keys.append(input("Geben Sie den nächsten Auth Bearer ein: "))
-    more_keys = input("Wollen Sie noch einen Key eingeben? (y/anykey)")
+    api_keys.append(input("Please enter the next Key: "))
+    more_keys = input("Do you want to add more Keys? (y/anykey)")
 
 while (user_loop <= len(api_keys)):
     get_top_tracks(api_keys[user_loop - 1])
     if user_loop <= len(api_keys):
         user_loop += 1
-
+print('These are your most listened Songs: ')
 for i in range(len(list_songs)):
-    print(list_songs[i], list_artists[i])
+    print(str(i + 1)+":", list_songs[i], list_artists[i])
+
