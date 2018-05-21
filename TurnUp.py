@@ -10,7 +10,6 @@ list_songs_unique = []
 list_artists_unique = []
 
 
-
 def get_top_tracks(api_key):
     r = requests.get("https://api.spotify.com/v1/me/top/tracks", headers={"Authorization": "Bearer " + str(api_key)})
     jsondata = r.json()["items"]
@@ -21,6 +20,7 @@ def get_top_tracks(api_key):
         list_artists.append(y)
         list_spotifyurl.append([elem['id']])
         p = p + 1
+
 
 xd= ("\n"
      "\n"
@@ -42,7 +42,7 @@ while more_keys == "y":
     api_keys.append(input("Please enter the next Key: "))
     more_keys = input("Do you want to add more Keys? (y/anykey)")
 
-while (user_loop <= len(api_keys)):
+while user_loop <= len(api_keys):
     get_top_tracks(api_keys[user_loop - 1])
     if user_loop <= len(api_keys):
         user_loop += 1
@@ -54,6 +54,4 @@ list_artists = list_artists[20:]
 list_spotifyurl = list_spotifyurl[20:]
 
 for i in range(len(list_songs)):
-    print(str(i +1)+":", list_songs[i], list_artists[i])
-
-
+    print(str(i + 1)+":", list_songs[i], list_artists[i])
